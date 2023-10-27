@@ -20,7 +20,9 @@ import java.sql.PreparedStatement;
  * @author User
  */
 public class interno2 extends javax.swing.JInternalFrame {
+
     private int idUsuario;
+
     /**
      * Creates new form inter2
      */
@@ -85,7 +87,6 @@ public class interno2 extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField descrip;
     private javax.swing.JButton jButton1;
@@ -97,82 +98,78 @@ public class interno2 extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     //metodo para mostrar los usuarios en la tabla;
-    
-    private void CargarTablaUsuarios(){
-    
- 
-    DefaultTableModel modelo = new DefaultTableModel();
+    private void CargarTablaUsuarios() {
 
-    try (Connection con = Conexion.conectar()) {
-        if (con != null) {
-            String sql = "SELECT * FROM empleados";
-            try (Statement st = con.createStatement();
-                 ResultSet rs = st.executeQuery(sql)) {
+        DefaultTableModel modelo = new DefaultTableModel();
 
-                // Agrega las columnas a tu modelo de tabla
-                modelo.addColumn("ID");
-                modelo.addColumn("Usuario");
-                modelo.addColumn("Password");
+        try (Connection con = Conexion.conectar()) {
+            if (con != null) {
+                String sql = "SELECT * FROM empleados";
+                try (Statement st = con.createStatement(); ResultSet rs = st.executeQuery(sql)) {
 
-                // Itera a través del resultado y agrega filas a la tabla
-                while (rs.next()) {
-                    Object[] fila = new Object[3];
-                    for (int i = 0; i < 3; i++) {
-                        fila[i] = rs.getObject(i + 1);
+                    // Agrega las columnas a tu modelo de tabla
+                    modelo.addColumn("ID");
+                    modelo.addColumn("Usuario");
+                    modelo.addColumn("Password");
+
+                    // Itera a través del resultado y agrega filas a la tabla
+                    while (rs.next()) {
+                        Object[] fila = new Object[3];
+                        for (int i = 0; i < 3; i++) {
+                            fila[i] = rs.getObject(i + 1);
+                        }
+
+                        modelo.addRow(fila);
                     }
 
-                    modelo.addRow(fila);
+                    // Asigna el modelo de tabla a tu componente JTable
+                    tablaUsuarios.setModel(modelo);
                 }
-
-                // Asigna el modelo de tabla a tu componente JTable
-                tablaUsuarios.setModel(modelo);
             }
+        } catch (SQLException e) {
+            System.out.println("Error al llenar la tabla de usuarios: " + e);
         }
-    } catch (SQLException e) {
-        System.out.println("Error al llenar la tabla de usuarios: " + e);
-    }
-    
-    tablaUsuarios.addMouseListener(new MouseAdapter() {
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        int fila = tablaUsuarios.rowAtPoint(e.getPoint());
-        int columna = 0; // Suponemos que la primera columna contiene el ID del usuario.
 
-        if (fila > -1) {
-            int idUsuario = (int) modelo.getValueAt(fila, columna);
-            EnviarDatosUsuariosSeleccionados(idUsuario);
-        }
-    }
-});
+        tablaUsuarios.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int fila = tablaUsuarios.rowAtPoint(e.getPoint());
+                int columna = 0; // Suponemos que la primera columna contiene el ID del usuario.
 
-}
+                if (fila > -1) {
+                    int idUsuario = (int) modelo.getValueAt(fila, columna);
+                    EnviarDatosUsuariosSeleccionados(idUsuario);
+                }
+            }
+        });
+
+    }
+
     private void EnviarDatosUsuariosSeleccionados(int idUsuario) {
-    try {
-        Connection con = Conexion.conectar();
-        String sql = "SELECT * FROM empleados WHERE id = ?";
-        PreparedStatement pst = con.prepareStatement(sql);
-        pst.setInt(1, idUsuario); // Establece el valor del parámetro en la consulta
+        try {
+            Connection con = Conexion.conectar();
+            String sql = "SELECT * FROM empleados WHERE id = ?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setInt(1, idUsuario); // Establece el valor del parámetro en la consulta
 
-        // Ejecuta la consulta
-        ResultSet rs = pst.executeQuery();
+            // Ejecuta la consulta
+            ResultSet rs = pst.executeQuery();
 
-        // Ahora puedes trabajar con el resultado (rs) para obtener los datos del usuario
-        while (rs.next()) {
-         descrip.setText(rs.getString("usuario"));
-            // Realiza las acciones necesarias con los datos obtenidos
-            // Por ejemplo, muestra los datos en la interfaz o realiza otras operaciones.
+            // Ahora puedes trabajar con el resultado (rs) para obtener los datos del usuario
+            while (rs.next()) {
+                descrip.setText(rs.getString("usuario"));
+                // Realiza las acciones necesarias con los datos obtenidos
+                // Por ejemplo, muestra los datos en la interfaz o realiza otras operaciones.
+            }
+
+            // Cierra los recursos
+            rs.close();
+            pst.close();
+            con.close();
+        } catch (SQLException e) {
+            // Maneja cualquier excepción de SQL aquí
+            e.printStackTrace();
         }
-
-        // Cierra los recursos
-        rs.close();
-        pst.close();
-        con.close();
-    } catch (SQLException e) {
-        // Maneja cualquier excepción de SQL aquí
-        e.printStackTrace();
     }
-}
-
 
 }
-

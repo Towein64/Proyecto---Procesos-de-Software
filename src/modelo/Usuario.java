@@ -1,16 +1,15 @@
 package modelo;
 
 public class Usuario {
-    
+
     private int idUsuario;
-    private String nombre ;
+    private String nombre;
     private String apellido;
     private String usuario;
     private String password;
     private String telefono;
-    
-    //cosntructor
 
+    //cosntructor
     public Usuario() {
         this.idUsuario = 0;
         this.nombre = "";
@@ -67,6 +66,5 @@ public class Usuario {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    
-    
+
 }

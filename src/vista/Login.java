@@ -1,4 +1,5 @@
 package vista;
+
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,6 +11,7 @@ import javax.swing.JPanel;
 import controlador.ControladorUsuario;
 import modelo.Usuario;
 import vista.Principal;
+
 /**
  *
  * @author User
@@ -200,19 +202,19 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_textoPasswordActionPerformed
 
     private void jToggleButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jToggleButton1KeyPressed
- 
+
     }//GEN-LAST:event_jToggleButton1KeyPressed
 
     private void textoUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoUsuarioKeyPressed
-           if(evt.getKeyCode()== evt.VK_ENTER){
-               textoPassword.requestFocus();
-           }
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            textoPassword.requestFocus();
+        }
     }//GEN-LAST:event_textoUsuarioKeyPressed
 
     private void textoPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoPasswordKeyPressed
-            if(evt.getKeyCode()== evt.VK_ENTER){
-               this.Login();
-           }
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            this.Login();
+        }
     }//GEN-LAST:event_textoPasswordKeyPressed
 
     /**
@@ -264,24 +266,23 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField textoUsuario;
     // End of variables declaration//GEN-END:variables
 
-private void Login() {
-    String nombreUsuario = textoUsuario.getText().trim();
-    String contrasena = new String(textoPassword.getPassword()).trim();
+    private void Login() {
+        String nombreUsuario = textoUsuario.getText().trim();
+        String contrasena = new String(textoPassword.getPassword()).trim();
 
-    if (nombreUsuario.isEmpty() || contrasena.isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Ingrese sus credenciales");
-    } else {
-        ControladorUsuario controlUsuario = new ControladorUsuario();
+        if (nombreUsuario.isEmpty() || contrasena.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese sus credenciales");
+        } else {
+            ControladorUsuario controlUsuario = new ControladorUsuario();
 
-        if (controlUsuario.loginUsuario(nombreUsuario, contrasena)) {
-            Principal principal = new Principal();
-            principal.setVisible(true);
-            this.dispose();
-       } else {
-            JOptionPane.showMessageDialog(null, "Usuario o Clave incorrectos");
+            if (controlUsuario.loginUsuario(nombreUsuario, contrasena)) {
+                Principal principal = new Principal();
+                principal.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario o Clave incorrectos");
+            }
         }
     }
-}
 
 }
-

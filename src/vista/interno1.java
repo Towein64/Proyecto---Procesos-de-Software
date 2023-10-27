@@ -20,7 +20,7 @@ public class interno1 extends javax.swing.JInternalFrame {
      */
     public interno1() {
         initComponents();
-        
+
     }
 
     /**
@@ -80,26 +80,25 @@ public class interno1 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_textoPasswordActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         String usuario = textoUsuario.getText().trim();
-    String password = textoPassword.getText().trim();
+        String password = textoPassword.getText().trim();
 
-    // Verifica si los campos están vacíos
-    if (usuario.isEmpty() || password.isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Complete todos los campos");
-    } else {
-        // Crea una instancia de ControladorUsuario
-        ControladorUsuario control = new ControladorUsuario();
-
-        // Intenta agregar el usuario a la base de datos
-        if (control.agregarUsuario(usuario, password)) {
-            JOptionPane.showMessageDialog(null, "Usuario agregado con éxito");
+        // Verifica si los campos están vacíos
+        if (usuario.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Complete todos los campos");
         } else {
-            JOptionPane.showMessageDialog(null, "Error al agregar el usuario");
-        }
-    }
-    }//GEN-LAST:event_jButton1ActionPerformed
+            // Crea una instancia de ControladorUsuario
+            ControladorUsuario control = new ControladorUsuario();
 
+            // Intenta agregar el usuario a la base de datos
+            if (control.agregarUsuario(usuario, password)) {
+                JOptionPane.showMessageDialog(null, "Usuario agregado con éxito");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al agregar el usuario");
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

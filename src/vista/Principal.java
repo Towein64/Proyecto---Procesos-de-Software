@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vista;
+
 import javax.swing.JDesktopPane;
 import java.awt.Dimension;
 
@@ -16,17 +17,18 @@ public class Principal extends javax.swing.JFrame {
      * Creates new form pestanas
      */
     public static JDesktopPane jDesktopPane_principal;
+
     public Principal() {
         initComponents();
-        this.setSize(new Dimension(700,700));
+        this.setSize(new Dimension(700, 700));
         this.setLocationRelativeTo(null);
         this.setTitle("Gestion Libreria");
         this.setLayout(null);
         jDesktopPane_principal = new JDesktopPane();
-        
+
         //int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
         //int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
-        this.jDesktopPane_principal.setBounds(0,0,700,700);
+        this.jDesktopPane_principal.setBounds(0, 0, 700, 700);
         this.add(jDesktopPane_principal);
     }
 
@@ -184,12 +186,11 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
         interno1 interno1 = new interno1();
-        
-        
+
     }//GEN-LAST:event_jMenu2ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-       interno2 interno2 = new interno2();
+        interno2 interno2 = new interno2();
         jDesktopPane_principal.add(interno2);
         interno2.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
