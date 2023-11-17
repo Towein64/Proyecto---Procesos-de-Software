@@ -5,6 +5,7 @@
 package vista;
 
 import coneccion.Conexion;
+import controlador.ControladorUsuario;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.table.DefaultTableModel;
@@ -14,19 +15,21 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import javax.swing.JTable;
 import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
+import modelo.Usuario;
 
 /**
  *
  * @author User
  */
-public class interno2 extends javax.swing.JInternalFrame {
+public class GestionUsuarios extends javax.swing.JInternalFrame {
 
     private int idUsuario;
 
     /**
      * Creates new form inter2
      */
-    public interno2() {
+    public GestionUsuarios() {
         initComponents();
         this.CargarTablaUsuarios();
     }
@@ -47,6 +50,7 @@ public class interno2 extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         descrip = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -71,21 +75,98 @@ public class interno2 extends javax.swing.JInternalFrame {
         ));
         scroll.setViewportView(tablaUsuarios);
 
-        jPanel1.add(scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 220, 140));
+        jPanel1.add(scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 220, 140));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 250, 160));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 260, 160));
 
-        jButton1.setText("jButton1");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, -1, -1));
+        jButton1.setText("Actualizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, 100, 30));
 
-        jButton2.setText("jButton2");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, -1, -1));
+        jButton2.setText("Eliminar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, 100, 30));
 
-        descrip.setText("jTextField1");
-        getContentPane().add(descrip, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, -1, -1));
+        descrip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                descripActionPerformed(evt);
+            }
+        });
+        getContentPane().add(descrip, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 120, 30));
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 120, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       if (!descrip.getText().isEmpty() ) {
+       ControladorUsuario controlusuario = new ControladorUsuario();
+       String nuevoUsuario = descrip.getText().trim(); // Nuevo nombre de usuario
+       String password = jTextField2.getText().trim(); // Nueva contraseña
+
+       int id = obtenerIdDeLaTabla();
+
+       if (id != -1) {
+           if (controlusuario.actualizarUsuario(id, nuevoUsuario)) {
+               if (controlusuario.actualizarPassword(nuevoUsuario, password)) {
+                   JOptionPane.showMessageDialog(null, "Usuario Actualizado");
+                   descrip.setText("");
+                   jTextField2.setText("");
+                   this.CargarTablaUsuarios();
+               } else {
+                   JOptionPane.showMessageDialog(null, "Error al actualizar la contraseña");
+               }
+           } else {
+               JOptionPane.showMessageDialog(null, "Error al actualizar el nombre de usuario");
+           }
+       } else {
+           JOptionPane.showMessageDialog(null, "Seleccione un usuario de la tabla");
+       }
+   } else {
+       JOptionPane.showMessageDialog(null, "Seleccione un usuario");
+   }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void descripActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descripActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_descripActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+  if (!descrip.getText().isEmpty()) {
+       ControladorUsuario controlusuario = new ControladorUsuario();
+       String usuario = descrip.getText().trim();
+       String password = jTextField2.getText().trim(); // Obtener la contraseña del campo jTextField2
+
+       if (controlusuario.eliminarUsuario(usuario)) {
+           JOptionPane.showMessageDialog(null, "Usuario Actualizado");
+           descrip.setText(""); 
+           this.CargarTablaUsuarios();
+       } else {
+           JOptionPane.showMessageDialog(null, "Error al actualizar el usuario");
+       }
+
+   } else {
+       JOptionPane.showMessageDialog(null, "Seleccione un usuario");
+   }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField descrip;
@@ -93,6 +174,7 @@ public class interno2 extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField2;
     public static javax.swing.JScrollPane scroll;
     public static javax.swing.JTable tablaUsuarios;
     // End of variables declaration//GEN-END:variables
@@ -107,12 +189,9 @@ public class interno2 extends javax.swing.JInternalFrame {
                 String sql = "SELECT * FROM empleados";
                 try (Statement st = con.createStatement(); ResultSet rs = st.executeQuery(sql)) {
 
-                    // Agrega las columnas a tu modelo de tabla
                     modelo.addColumn("ID");
                     modelo.addColumn("Usuario");
                     modelo.addColumn("Password");
-
-                    // Itera a través del resultado y agrega filas a la tabla
                     while (rs.next()) {
                         Object[] fila = new Object[3];
                         for (int i = 0; i < 3; i++) {
@@ -122,7 +201,6 @@ public class interno2 extends javax.swing.JInternalFrame {
                         modelo.addRow(fila);
                     }
 
-                    // Asigna el modelo de tabla a tu componente JTable
                     tablaUsuarios.setModel(modelo);
                 }
             }
@@ -152,24 +230,31 @@ public class interno2 extends javax.swing.JInternalFrame {
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, idUsuario); // Establece el valor del parámetro en la consulta
 
-            // Ejecuta la consulta
             ResultSet rs = pst.executeQuery();
 
-            // Ahora puedes trabajar con el resultado (rs) para obtener los datos del usuario
             while (rs.next()) {
                 descrip.setText(rs.getString("usuario"));
-                // Realiza las acciones necesarias con los datos obtenidos
-                // Por ejemplo, muestra los datos en la interfaz o realiza otras operaciones.
+                jTextField2.setText(rs.getString("password"));
+
             }
 
-            // Cierra los recursos
-            rs.close();
+            rs.close(); 
             pst.close();
             con.close();
         } catch (SQLException e) {
-            // Maneja cualquier excepción de SQL aquí
+        
             e.printStackTrace();
         }
     }
+    
+    private int obtenerIdDeLaTabla() {
+    int filaSeleccionada = tablaUsuarios.getSelectedRow(); // Obtén la fila seleccionada
+    if (filaSeleccionada != -1) {
+        DefaultTableModel modelo = (DefaultTableModel) tablaUsuarios.getModel();
+        int id = (int) modelo.getValueAt(filaSeleccionada, 0);
+        return id;
+    }
+    return -1; 
+}
 
 }

@@ -13,12 +13,12 @@ import modelo.Usuario;
  *
  * @author User
  */
-public class interno1 extends javax.swing.JInternalFrame {
+public class AgregarUsuario extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form interno1
      */
-    public interno1() {
+    public AgregarUsuario() {
         initComponents();
 
     }
@@ -54,6 +54,11 @@ public class interno1 extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
         textoUsuario.setPreferredSize(new java.awt.Dimension(75, 25));
+        textoUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoUsuarioActionPerformed(evt);
+            }
+        });
         getContentPane().add(textoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 200, 20));
 
         textoPassword.setPreferredSize(new java.awt.Dimension(75, 25));
@@ -84,14 +89,14 @@ public class interno1 extends javax.swing.JInternalFrame {
         String usuario = textoUsuario.getText().trim();
         String password = textoPassword.getText().trim();
 
-        // Verifica si los campos están vacíos
+      
         if (usuario.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Complete todos los campos");
         } else {
-            // Crea una instancia de ControladorUsuario
+            
             ControladorUsuario control = new ControladorUsuario();
 
-            // Intenta agregar el usuario a la base de datos
+           
             if (control.agregarUsuario(usuario, password)) {
                 JOptionPane.showMessageDialog(null, "Usuario agregado con éxito");
             } else {
@@ -99,6 +104,10 @@ public class interno1 extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void textoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textoUsuarioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

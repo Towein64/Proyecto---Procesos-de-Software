@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import java.sql.Statement;
 
 public class ControladorUsuario {
 
@@ -88,5 +89,78 @@ public class ControladorUsuario {
 
         return respuesta;
     }
+    public boolean actualizarUsuario(int id, String nuevoUsuario) {
+    boolean respuesta = false;
+
+    try (Connection cn = Conexion.conectar()) {
+        String sql = "UPDATE empleados SET usuario = ? WHERE id = ?";
+        try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+            preparedStatement.setString(1, nuevoUsuario);  // Establece el nuevo nombre de usuario
+            preparedStatement.setInt(2, id);  // Busca por el ID
+
+            // Ejecutar la actualización
+            int filasActualizadas = preparedStatement.executeUpdate();
+
+            if (filasActualizadas > 0) {
+                respuesta = true;
+            }
+        }
+    } catch (SQLException e) {
+        System.out.println("Error al actualizar el nombre de usuario: " + e.getMessage());
+        JOptionPane.showMessageDialog(null, "Error al actualizar el nombre de usuario");
+    }
+
+    return respuesta;
+}
+
+    public boolean actualizarPassword(String usuario, String password) {
+
+    boolean respuesta = false;
+
+    try (Connection cn = Conexion.conectar()) {
+        String sql = "UPDATE empleados SET password = ? WHERE usuario = ?";
+        try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+            preparedStatement.setString(1, password);
+            preparedStatement.setString(2, usuario);
+
+            // Ejecutar la actualización
+            int filasActualizadas = preparedStatement.executeUpdate();
+
+            if (filasActualizadas > 0) {
+                respuesta = true;
+            }
+        }
+    } catch (SQLException e) {
+        System.out.println("Error al actualizar password: " + e.getMessage());
+        JOptionPane.showMessageDialog(null, "Error al actualizar password");
+    }
+
+    return respuesta;
+}
+
+    
+    public boolean eliminarUsuario(String usuario) {
+
+    boolean respuesta = false;
+
+    try (Connection cn = Conexion.conectar()) {
+        String sql = "DELETE FROM empleados WHERE usuario = ?";
+        try (PreparedStatement preparedStatement = cn.prepareStatement(sql)) {
+            preparedStatement.setString(1, usuario);
+
+            // Ejecutar la eliminación
+            int filasEliminadas = preparedStatement.executeUpdate();
+
+            if (filasEliminadas > 0) {
+                respuesta = true;
+            }
+        }
+    } catch (SQLException e) {
+        System.out.println("Error al eliminar usuario: " + e.getMessage());
+        JOptionPane.showMessageDialog(null, "Error al eliminar usuario");
+    }
+
+    return respuesta;
+}
 
 }

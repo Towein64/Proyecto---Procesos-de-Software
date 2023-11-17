@@ -4,19 +4,18 @@ public class Usuario {
 
     private int idUsuario;
     private String nombre;
-    private String apellido;
     private String usuario;
     private String password;
-    private String telefono;
+   
 
     //cosntructor
     public Usuario() {
         this.idUsuario = 0;
         this.nombre = "";
-        this.apellido = "";
+       
         this.usuario = "";
         this.password = "";
-        this.telefono = "";
+        
     }
 
     public int getIdUsuario() {
@@ -35,13 +34,9 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
-    }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
+
+
 
     public String getUsuario() {
         return usuario;
@@ -57,14 +52,6 @@ public class Usuario {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
     }
 
 }

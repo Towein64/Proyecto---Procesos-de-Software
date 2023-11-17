@@ -89,6 +89,11 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem6.setText("Eliminar Empleado");
         jMenuItem6.setPreferredSize(new java.awt.Dimension(150, 50));
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem6);
 
         jMenuBar1.add(jMenu2);
@@ -107,6 +112,11 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem2.setText("Buscar Cliente");
         jMenuItem2.setPreferredSize(new java.awt.Dimension(150, 50));
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem2);
 
         jMenuItem3.setText("Eliminar Cliente ");
@@ -129,6 +139,11 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem8.setText("Buscar Libro ");
         jMenuItem8.setPreferredSize(new java.awt.Dimension(150, 50));
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem8);
 
         jMenuItem9.setText("Eliminar Libro ");
@@ -142,6 +157,11 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem10.setText(" ");
         jMenuItem10.setPreferredSize(new java.awt.Dimension(150, 50));
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem10);
 
         jMenuItem11.setText("Buscar Venta ");
@@ -160,7 +180,7 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 722, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,29 +191,55 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        interno1 interno1 = new interno1();
+        AgregarUsuario interno1 = new AgregarUsuario();
         jDesktopPane_principal.add(interno1);
         interno1.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        AgregarClientes interno3 = new AgregarClientes();
+        jDesktopPane_principal.add(interno3);
+        interno3.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        // TODO add your handling code here:
+        AgregarLibros interno5 = new AgregarLibros();
+        jDesktopPane_principal.add(interno5);
+        interno5.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
-        interno1 interno1 = new interno1();
+        AgregarUsuario interno1 = new AgregarUsuario();
 
     }//GEN-LAST:event_jMenu2ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        interno2 interno2 = new interno2();
+        GestionUsuarios interno2 = new GestionUsuarios();
         jDesktopPane_principal.add(interno2);
         interno2.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+     
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+       GestionUsuarios interno2 = new GestionUsuarios();
+        jDesktopPane_principal.add(interno2);
+        interno2.setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+          GestionClientes interno4 = new GestionClientes();
+          jDesktopPane_principal.add(interno4);
+          interno4.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        GestionLibros interno6 = new GestionLibros();
+          jDesktopPane_principal.add(interno6);
+          interno6.setVisible(true);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     /**
      * @param args the command line arguments
