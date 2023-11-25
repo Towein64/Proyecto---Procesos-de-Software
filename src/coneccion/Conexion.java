@@ -10,7 +10,7 @@ public class Conexion { //sdsdsd
 
     public static Connection conectar() {
         try {
-            Connection cn = DriverManager.getConnection("jdbc:sqlite:C:/Users/User/Desktop/bd_1.db");
+            Connection cn = DriverManager.getConnection("jdbc:sqlite:C:/Users/User/Documents/NetBeansProjects/Proyecto_Procesos/src/coneccion/bd_1.db");
             return cn;
         } catch (SQLException e) {
             System.out.println("Error en la conexion local" + e);
