@@ -56,8 +56,6 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -155,7 +153,7 @@ public class Principal extends javax.swing.JFrame {
         jMenu4.setText("Venta ");
         jMenu4.setPreferredSize(new java.awt.Dimension(150, 50));
 
-        jMenuItem10.setText(" ");
+        jMenuItem10.setText("Generar Venta");
         jMenuItem10.setPreferredSize(new java.awt.Dimension(150, 50));
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,14 +161,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jMenu4.add(jMenuItem10);
-
-        jMenuItem11.setText("Buscar Venta ");
-        jMenuItem11.setPreferredSize(new java.awt.Dimension(150, 50));
-        jMenu4.add(jMenuItem11);
-
-        jMenuItem12.setText("Resumen Ventas ");
-        jMenuItem12.setPreferredSize(new java.awt.Dimension(150, 50));
-        jMenu4.add(jMenuItem12);
 
         jMenuBar1.add(jMenu4);
 
@@ -219,12 +209,6 @@ public class Principal extends javax.swing.JFrame {
         interno2.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
-    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-     InterFacturacion interFacturacion = new InterFacturacion();
-     jDesktopPane_principal.add(interFacturacion);
-     interFacturacion.setVisible(true);
-    }//GEN-LAST:event_jMenuItem10ActionPerformed
-
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
        GestionUsuarios interno2 = new GestionUsuarios();
         jDesktopPane_principal.add(interno2);
@@ -242,6 +226,12 @@ public class Principal extends javax.swing.JFrame {
           jDesktopPane_principal.add(interno6);
           interno6.setVisible(true);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        InterFacturacion interFacturacion = new InterFacturacion();
+        jDesktopPane_principal.add(interFacturacion);
+        interFacturacion.setVisible(true);
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -287,8 +277,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

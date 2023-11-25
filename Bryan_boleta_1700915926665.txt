@@ -1,0 +1,12 @@
+Cliente: Bryan Silva
+Correo: bryan.silva@unmsm.edu.pe
+Fecha: Sat Nov 25 07:38:46 PET 2023
+Productos:
+ - Producto: Harry Potter
+   Cantidad: 2
+   Precio unitario: 19.99
+   Total: 39.98
+ - Producto: Cien años de soledad
+   Cantidad: 1
+   Precio unitario: 24.99
+   Total: 24.99
