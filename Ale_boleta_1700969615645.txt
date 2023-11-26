@@ -1,0 +1,12 @@
+Cliente: Ale Manca
+Correo: alequita.manca@gmail.com
+Fecha: Sat Nov 25 22:33:35 PET 2023
+Productos:
+ - Producto: las aventuras de alequita
+   Cantidad: 1
+   Precio unitario: 12.0
+   Total: 12.0
+ - Producto: Cien años de soledad
+   Cantidad: 2
+   Precio unitario: 24.99
+   Total: 49.98
